@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur de Coût d&#x27;Adhésion à une Coopérative Agricole | Votre Potentiel Coopératif en Chiffres</title>
+    <meta name="description" content="Calculez les frais d">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        header {
+            background: linear-gradient(to right, #4CAF50, #66BB6A);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: -0.5px;
+        }
+        header p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 15px auto 0;
+            opacity: 0.9;
+        }
+        .section {
+            background-color: white;
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .section h2 {
+            color: #2E7D32;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #E8F5E9;
+            padding-bottom: 10px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+            font-size: 0.95em;
+        }
+        .form-group input[type="number"],
+        .form-group select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        #tool-submit {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            display: block;
+            width: fit-content;
+        }
+        #tool-submit:hover {
+            background-color: #388E3C;
+        }
+        #tool-result {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #E8F5E9;
+            border: 1px solid #C8E6C9;
+            border-radius: 8px;
+            font-size: 1.1em;
+            color: #2E7D32;
+            line-height: 1.8;
+            word-break: break-word;
+        }
+        #tool-result h3 {
+            color: #1B5E20;
+            margin-top: 0;
+            font-size: 1.6em;
+        }
+        .result-item {
+            margin-bottom: 10px;
+        }
+        .result-item strong {
+            display: inline-block;
+            width: 220px;
+            color: #1B5E20;
+        }
+        .cta-buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .cta-buttons button {
+            background-color: #2196F3;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.05em;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-buttons button:hover {
+            background-color: #1976D2;
+        }
+        .seo-section {
+            background-color: #f0f4f7;
+            padding: 40px 0;
+            margin-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            color: #555;
+            text-align: left;
+        }
+        .seo-section h2 {
+            color: #2E7D32;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .seo-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .seo-section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+        .seo-section li {
+            margin-bottom: 8px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+            font-size: 0.9em;
+        }
+    </style>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://simulateur-de-cout-d-adhesion-a-une-cooperative-11ba4f78.onrender.com">
+    <meta property="og:title" content="Simulateur de Coût d&#x27;Adhésion à une Coopérative Agricole">
+    <meta property="og:description" content="Calculez les frais d">
+    <meta property="og:url" content="https://simulateur-de-cout-d-adhesion-a-une-cooperative-11ba4f78.onrender.com">
+    <meta property="og:type" content="website">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Simulateur de Coût d'Adhésion à une Coopérative Agricole", "description": "Calculez les frais d", "url": "https://simulateur-de-cout-d-adhesion-a-une-cooperative-11ba4f78.onrender.com", "applicationCategory": "UtilityApplication", "operatingSystem": "Web Browser"}</script>
+</head>
+<body data-site-slug="simulateur-de-cout-d-adhesion-a-une-cooperative-11ba4f78" data-runtime-mode="generic_calculator">
+    <header>
+        <div class="container">
+            <h1>Simulateur Coopérative Agricole</h1>
+            <p>Découvrez la viabilité économique d'une adhésion à une coopérative. Évaluez les coûts initiaux, les parts sociales et les avantages financiers selon votre exploitation et votre région.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2>Votre Potentiel Coopératif en Chiffres</h2>
+            <p>Renseignez les informations ci-dessous pour obtenir une estimation personnalisée des frais d'adhésion et des bénéfices potentiels.</p>
+
+            <form id="tool-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="typeProduction">Type de production principale :</label>
+                        <select id="typeProduction" name="typeProduction" required>
+                            <option value="">Sélectionnez votre type</option>
+                            <option value="cereales">Céréales</option>
+                            <option value="elevage">Élevage</option>
+                            <option value="viticulture">Viticulture</option>
+                            <option value="maraichage">Maraîchage</option>
+                            <option value="arboriculture">Arboriculture</option>
+                            <option value="lait">Production Laitière</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surfaceExploitee">Surface exploitée (hectares) :</label>
+                        <input type="number" id="surfaceExploitee" name="surfaceExploitee" min="0" value="50" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="chiffreAffairesAnnuel">Chiffre d'affaires annuel (€) :</label>
+                        <input type="number" id="chiffreAffairesAnnuel" name="chiffreAffairesAnnuel" min="0" value="100000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="region">Votre Région en France :</label>
+                        <select id="region" name="region" required>
+                            <option value="">Sélectionnez votre région</option>
+                            <option value="nouvelle-aquitaine">Nouvelle-Aquitaine</option>
+                            <option value="occitanie">Occitanie</option>
+                            <option value="bretagne">Bretagne</option>
+                            <option value="pays-de-la-loire">Pays de la Loire</option>
+                            <option value="grand-est">Grand Est</option>
+                            <option value="auvergne-rhone-alpes">Auvergne-Rhône-Alpes</option>
+                            <option value="ile-de-france">Île-de-France</option>
+                            <option value="autres">Autres régions</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" id="tool-submit">Calculer mon potentiel</button>
+            </form>
+
+            <div id="tool-result" style="display: none;">
+                <h3 id="result-headline">Résultats de votre simulation :</h3>
+                <div class="result-item"><strong>Frais d'adhésion estimés :</strong> <span id="res-fraisAdhesion"></span></div>
+                <div class="result-item"><strong>Parts sociales estimées :</strong> <span id="res-partsSociales"></span></div>
+                <div class="result-item"><strong>Bénéfices annuels potentiels (économies/plus-values) :</strong> <span id="res-beneficesPotentiels"></span></div>
+                <div class="result-item"><strong>Retour sur investissement estimé (en années) :</strong> <span id="res-roi"></span></div>
+                <div class="result-item"><strong>Avantages supplémentaires (non chiffrés) :</strong> <span id="res-avantages"></span></div>
+            </div>
+
+            <div class="cta-buttons">
+                <button data-affiliate-slot="contact-coop">Contacter une coopérative</button>
+                <button data-affiliate-slot="guide-adhesion">Télécharger le guide d'adhésion</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Comprendre l'Adhésion à une Coopérative</h2>
+            <p>Rejoindre une coopérative agricole, c'est s'engager dans une démarche collective qui vise à mutualiser les moyens et à optimiser la valeur ajoutée de votre production. Au-delà des chiffres, c'est aussi un réseau, des services et un accompagnement précieux pour le développement durable de votre exploitation.</p>
+            <ul>
+                <li><strong>Mutualisation des coûts :</strong> Achats groupés, services partagés (matériel, logistique, conseils techniques).</li>
+                <li><strong>Accès aux marchés :</strong> Négociation de meilleurs prix, sécurisation des débouchés, valorisation des produits.</li>
+                <li><strong>Accompagnement technique et juridique :</strong> Expertise agronomique, réglementaire et fiscale adaptée.</li>
+                <li><strong>Gouvernance démocratique :</strong> Chaque adhérent, une voix, pour une prise de décision collective et transparente.</li>
+                <li><strong>Solidarité et résilience :</strong> Soutien en cas de difficultés, partages d'expériences et d'innovations.</li>
+            </ul>
+        </section>
+    </main>
+
+    <div class="seo-section">
+        <div class="container">
+            <h2>Optimisez votre Exploitation : Pourquoi Rejoindre une Coopérative Agricole ?</h2>
+            <p>En tant qu'agriculteur en France, vous vous interrogez sur l'avenir de votre exploitation et les moyens d'en améliorer la rentabilité. L'adhésion à une coopérative agricole représente une stratégie pertinente pour de nombreux exploitants. Notre simulateur vous aide à anticiper les <strong>frais d'adhésion coopérative</strong>, à comprendre les <strong>parts sociales agricoles</strong>, et à estimer les <strong>bénéfices d'une coopérative agricole</strong>.</p>
+            <p>Que vous soyez producteur de <strong>céréales</strong>, éleveur, viticulteur ou maraîcher, les avantages sont multiples :</p>
+            <ul>
+                <li><strong>Réduction des coûts de production :</strong> Grâce aux volumes d'achat, les coopératives obtiennent des tarifs préférentiels sur les intrants (semences, engrais, phytosanitaires, alimentation animale).</li>
+                <li><strong>Sécurisation des revenus :</strong> Accès facilité aux marchés, contrats de vente garantis, et valorisation des produits transformés.</li>
+                <li><strong>Accès à l'innovation et à la recherche :</strong> Les coopératives investissent dans la R&D pour proposer des solutions techniques et agronomiques avant-gardistes.</li>
+                <li><strong>Soutien technique et commercial :</strong> Un accompagnement constant pour l'optimisation des pratiques culturales et la commercialisation des récoltes.</li>
+                <li><strong>Financements et investissements mutualisés :</strong> Projets d'envergure collectivement portés pour moderniser les outils de production.</li>
+            </ul>
+            <p>Notre outil de <strong>calcul des frais d'adhésion coopérative agricole</strong> prend en compte des paramètres clés comme votre type de production et votre région pour vous offrir une projection financière réaliste. Ne laissez plus le doute vous freiner. Estimez dès aujourd'hui les <strong>gains potentiels d'une coopérative</strong> et les <strong>économies agricoles</strong> réalisables en mutualisant vos ressources.</p>
+            <p>Découvrez comment les <strong>avantages d'une adhésion coopérative</strong> peuvent transformer la gestion de votre exploitation et renforcer votre position sur le marché agricole français.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Simulateur Coopérative Agricole. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('tool-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const typeProduction = document.getElementById('typeProduction').value;
+            const surfaceExploitee = parseFloat(document.getElementById('surfaceExploitee').value);
+            const chiffreAffairesAnnuel = parseFloat(document.getElementById('chiffreAffairesAnnuel').value);
+            const region = document.getElementById('region').value;
+
+            let fraisAdhesionBase = 500; // Frais fixes min
+            let partsSocialesBase = 0.005 * chiffreAffairesAnnuel; // 0.5% du CA
+            let beneficesPotentielsBase = 0.02 * chiffreAffairesAnnuel; // 2% du CA en économies/plus-values
+
+            // Ajustements selon le type de production
+            if (typeProduction === 'cereales') {
+                fraisAdhesionBase += 200;
+                partsSocialesBase += surfaceExploitee * 10;
+                beneficesPotentielsBase *= 1.1; // Meilleure mutualisation pour les céréales
+            } else if (typeProduction === 'elevage') {
+                fraisAdhesionBase += 300;
+                partsSocialesBase += surfaceExploitee * 15; // Coûts d'intrants plus élevés
+                beneficesPotentielsBase *= 1.2; // Synergies sur l'alimentation, la santé animale
+            } else if (typeProduction === 'viticulture') {
+                fraisAdhesionBase += 400;
+                partsSocialesBase += surfaceExploitee * 20;
+                beneficesPotentielsBase *= 1.3; // Valorisation produits transformés
+            } else if (typeProduction === 'maraichage') {
+                fraisAdhesionBase += 250;
+                partsSocialesBase += surfaceExploitee * 25; // Surface faible, coût par ha plus élevé
+                beneficesPotentielsBase *= 1.15; // Accès direct aux marchés locaux
+            } else if (typeProduction === 'arboriculture') {
+                fraisAdhesionBase += 350;
+                partsSocialesBase += surfaceExploitee * 18;
+                beneficesPotentielsBase *= 1.25; // Logistique et conditionnement optimisés
+            } else if (typeProduction === 'lait') {
+                fraisAdhesionBase += 300;
+                partsSocialesBase += chiffreAffairesAnnuel * 0.007; // CA très lié au volume de lait
+                beneficesPotentielsBase *= 1.2; // Collecte, transformation
+            }
+
+            // Ajustements selon la région (très simplifiés)
+            if (region === 'bretagne' || region === 'pays-de-la-loire') {
+                beneficesPotentielsBase *= 1.05; // Forte densité de coopératives, services efficaces
+            } else if (region === 'nouvelle-aquitaine' || region === 'occitanie') {
+                fraisAdhesionBase *= 0.95; // Souvent des aides régionales
+            }
+
+            // Cap sur les frais d'adhésion et parts sociales
+            fraisAdhesionBase = Math.max(fraisAdhesionBase, 500); // Minimum 500€
+            partsSocialesBase = Math.max(partsSocialesBase, 500); // Minimum 500€
+            
+            const totalCoutInitial = fraisAdhesionBase + partsSocialesBase;
+            let roiAnnees = totalCoutInitial / beneficesPotentielsBase;
+            if (isNaN(roiAnnees) || !isFinite(roiAnnees) || roiAnnees <= 0) {
+                roiAnnees = "variable, contactez-nous";
+            } else {
+                roiAnnees = roiAnnees.toFixed(1) + " ans";
+            }
+
+            let avantagesSupp = "Accès à des formations, conseils techniques personnalisés, réseau d'agriculteurs, meilleure visibilité sur le marché.";
+            if (typeProduction === 'viticulture') {
+                avantagesSupp = "Valorisation des crus, promotion collective, accès à des circuits de distribution spécifiques.";
+            } else if (typeProduction === 'elevage') {
+                avantagesSupp = "Optimisation de l'alimentation, suivi sanitaire, gestion des effluents.";
+            }
+
+            document.getElementById('res-fraisAdhesion').textContent = fraisAdhesionBase.toFixed(0) + ' €';
+            document.getElementById('res-partsSociales').textContent = partsSocialesBase.toFixed(0) + ' €';
+            document.getElementById('res-beneficesPotentiels').textContent = beneficesPotentielsBase.toFixed(0) + ' €/an';
+            document.getElementById('res-roi').textContent = roiAnnees;
+            document.getElementById('res-avantages').textContent = avantagesSupp;
+
+            document.getElementById('tool-result').style.display = 'block';
+        });
+    </script>
+<div id="qa-smoke-result" hidden></div>
+<script id="farmbuilder-affiliate-helper">
+(function () {
+  window.__UTILITY_AFFILIATE_MAP = window.__UTILITY_AFFILIATE_MAP || {};
+  document.addEventListener("click", function (event) {
+    const target = event.target.closest("[data-affiliate-slot]");
+    if (!target) return;
+    const slot = target.getAttribute("data-affiliate-slot");
+    const href = window.__UTILITY_AFFILIATE_MAP[slot];
+    if (!href) return;
+    if (target.tagName && target.tagName.toLowerCase() === "a") {
+      target.setAttribute("href", href);
+      target.removeAttribute("rel");
+      return;
+    }
+    event.preventDefault();
+    window.open(href, "_blank");
+  }, true);
+})();
+</script>
+<script id="farmbuilder-functional-qa">
+(function () {
+  function marker() {
+    let node = document.getElementById("qa-smoke-result");
+    if (node) return node;
+    node = document.createElement("div");
+    node.id = "qa-smoke-result";
+    node.hidden = true;
+    document.body.appendChild(node);
+    return node;
+  }
+
+  let qaFinished = false;
+  let qaWatchdog = null;
+
+  function normalize(text) {
+    return String(text || "").replace(/\s+/g, " ").trim();
+  }
+
+  function findForm() {
+    return document.getElementById("tool-form") || document.querySelector("form");
+  }
+
+  function findResult() {
+    return (
+      document.getElementById("tool-result") ||
+      document.querySelector("[data-result]") ||
+      document.querySelector(".tool-result, .result-card, .result, .results, .output, .preview, .diagnostic, .analysis")
+    );
+  }
+
+  function primaryAction(form) {
+    if (!form) return null;
+    return (
+      document.getElementById("tool-submit") ||
+      form.querySelector("#tool-submit") ||
+      form.querySelector("[data-primary-action]") ||
+      form.querySelector("button[type=submit]") ||
+      form.querySelector("button") ||
+      form.querySelector("input[type=submit]")
+    );
+  }
+
+  function resultSignature(node) {
+    if (!node) return "";
+    const text = normalize(node.textContent);
+    const html = normalize(node.innerHTML).slice(0, 600);
+    return `${text}||${html}`;
+  }
+
+  function resultHeadline(node) {
+    if (!node) return "";
+    const heading = node.querySelector("h1, h2, h3, strong, b");
+    return normalize(heading ? heading.textContent : "");
+  }
+
+  function sampleText(field) {
+    const key = `${field.id || ""} ${field.name || ""} ${field.placeholder || ""}`.toLowerCase();
+    if (/email/.test(key)) return "bonjour@example.com";
+    if (/url|site|website|lien/.test(key)) return "https://example.com/offre-solaire";
+    if (/phone|tel|mobile/.test(key)) return "0612345678";
+    if (/ville|city|localisation|location|region|departement|postal/.test(key)) return "Paris";
+    if (/orientation/.test(key)) return "sud";
+    if (/keyword|theme|topic|sujet|subject/.test(key)) return "energie solaire domestique";
+    if (/titre|title/.test(key)) return "Simulateur solaire maison";
+    if (/nom|name|project/.test(key)) return "Projet Horizon";
+    if (/description|notes|content|message/.test(key)) return "Maison individuelle exposee sud avec toiture exploitable.";
+    return field.placeholder || "France";
+  }
+
+  function sampleNumber(field) {
+    const key = `${field.id || ""} ${field.name || ""}`.toLowerCase();
+    if (/inclinaison|angle|slope/.test(key)) return "30";
+    if (/surface|size|m2|sqm/.test(key)) return "28";
+    if (/annee|year/.test(key)) return "2024";
+    if (/prix|price|budget|cost|amount|montant/.test(key)) return "12000";
+    const min = Number(field.min || "");
+    const max = Number(field.max || "");
+    if (Number.isFinite(min) && Number.isFinite(max) && max >= min) {
+      return String(Math.min(max, Math.max(min, min + Math.round((max - min) * 0.35))));
+    }
+    if (Number.isFinite(min)) return String(Math.max(min, 12));
+    if (Number.isFinite(max)) return String(Math.min(max, 12));
+    return field.value || "12";
+  }
+
+  function applySample(field) {
+    const tag = (field.tagName || "").toLowerCase();
+    const type = (field.type || "").toLowerCase();
+    if (field.disabled) return;
+    if (type === "hidden" || type === "submit" || type === "button" || type === "reset" || type === "image" || type === "file") {
+      return;
+    }
+    const currentValue = normalize(field.value);
+    if (tag === "select") {
+      if (currentValue) return;
+      const option = Array.from(field.options || []).find((item) => item.value && !item.disabled) || field.options[0];
+      if (option) field.value = option.value;
+      return;
+    }
+    if (type === "checkbox") {
+      if (field.checked) return;
+      field.checked = true;
+      return;
+    }
+    if (type === "radio") {
+      if (field.checked) return;
+      field.checked = true;
+      return;
+    }
+    if (type === "date") {
+      if (currentValue) return;
+      field.value = "2026-03-01";
+      return;
+    }
+    if (type === "email") {
+      if (currentValue) return;
+      field.value = "bonjour@example.com";
+      return;
+    }
+    if (type === "url") {
+      if (currentValue) return;
+      field.value = "https://example.com/offre-solaire";
+      return;
+    }
+    if (type === "tel") {
+      if (currentValue) return;
+      field.value = "0612345678";
+      return;
+    }
+    if (type === "color") {
+      if (currentValue) return;
+      field.value = "#2f855a";
+      return;
+    }
+    if (type === "number" || type === "range") {
+      if (currentValue) return;
+      field.value = sampleNumber(field);
+      return;
+    }
+    if (currentValue) return;
+    field.value = sampleText(field);
+  }
+
+  function stamp(status, detail, headline, primary) {
+    if (qaFinished) return;
+    qaFinished = true;
+    if (qaWatchdog) {
+      window.clearTimeout(qaWatchdog);
+      qaWatchdog = null;
+    }
+    const node = marker();
+    node.dataset.status = status;
+    node.dataset.mode = "native-form";
+    node.dataset.detail = detail || "";
+    node.dataset.headline = headline || "";
+    node.dataset.primary = primary || "";
+    node.dataset.viewport = window.innerWidth <= 640 ? "mobile" : "desktop";
+    window.setTimeout(function () {
+      try {
+        window.stop();
+      } catch (_error) {}
+    }, 0);
+  }
+
+  function installModalGuards() {
+    const noop = function () {};
+    const approve = function () { return true; };
+    const empty = function () { return ""; };
+    try { window.alert = noop; } catch (_error) {}
+    try { window.confirm = approve; } catch (_error) {}
+    try { window.prompt = empty; } catch (_error) {}
+  }
+
+  function triggerAction(form, action) {
+    try {
+      if (typeof form.requestSubmit === "function") {
+        form.requestSubmit(action || undefined);
+        return;
+      }
+    } catch (_error) {}
+    if (action && typeof action.click === "function") {
+      action.click();
+      return;
+    }
+    form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
+  }
+
+  function inspectResult(before, attemptsLeft) {
+    const result = findResult();
+    if (!result) {
+      stamp("fail", "La zone de resultat est introuvable.", "");
+      return;
+    }
+    const after = resultSignature(result);
+    const text = normalize(result.textContent);
+    if (after && after !== before && text.length >= 24) {
+      const primary = result.querySelector("a[href], button[data-href], [data-primary-url]") || document.querySelector("#tool-result a[href]");
+      stamp("pass", "Le formulaire natif a mis a jour la zone de resultat.", resultHeadline(result), primary ? (primary.getAttribute("href") || primary.getAttribute("data-primary-url") || "") : "");
+      return;
+    }
+    if (attemptsLeft > 0) {
+      window.setTimeout(function () {
+        inspectResult(before, attemptsLeft - 1);
+      }, 250);
+      return;
+    }
+    stamp("fail", "La zone de resultat n'a pas renvoye de contenu exploitable.", resultHeadline(result));
+  }
+
+  function runSmoke() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("__qa") !== "functional") return;
+    qaWatchdog = window.setTimeout(function () {
+      stamp("fail", "QA smoke timed out before the page reported a usable result.", "");
+    }, 7000);
+    const form = findForm();
+    if (!form) {
+      stamp("fail", "Le formulaire principal est introuvable.", "");
+      return;
+    }
+    const result = findResult();
+    const before = resultSignature(result);
+    installModalGuards();
+    try {
+      form.querySelectorAll("input, select, textarea").forEach(applySample);
+    } catch (error) {
+      stamp("fail", error && error.message ? `QA smoke sample failed: ${error.message}` : "QA smoke sample failed before submit.", "");
+      return;
+    }
+    const action = primaryAction(form);
+    try {
+      triggerAction(form, action);
+    } catch (error) {
+      stamp("fail", error && error.message ? `QA smoke submit failed: ${error.message}` : "QA smoke submit failed.", "");
+      return;
+    }
+    inspectResult(before, 10);
+  }
+
+  window.addEventListener("error", function (event) {
+    const message = event && event.message ? event.message : "JavaScript runtime error during QA smoke.";
+    stamp("fail", `QA smoke JS error: ${message}`, "");
+  }, { once: true });
+
+  window.addEventListener("unhandledrejection", function (event) {
+    const reason = event && event.reason;
+    const detail = typeof reason === "string"
+      ? reason
+      : reason && reason.message
+        ? reason.message
+        : "Unhandled promise rejection during QA smoke.";
+    stamp("fail", `QA smoke rejection: ${detail}`, "");
+  }, { once: true });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      window.setTimeout(runSmoke, 60);
+    }, { once: true });
+  } else {
+    window.setTimeout(runSmoke, 60);
+  }
+})();
+</script>
+</body>
+</html>
